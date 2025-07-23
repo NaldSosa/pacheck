@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoRAS</title>
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../mho_content/coras.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <a href="#" class="header-logo">
+                    <img src="../images/mhologo.png" alt="CoRAS Logo">
+                </a>
+                <button class="toggler sidebar-toggler">
+                    <span class="material-symbols-rounded">menu</span>
+                </button>
+            </header>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <span class="section-title">Main</span>
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active">
+                            <span class="nav-icon material-symbols-rounded">dashboard</span>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
+                        <span class="nav-tooltip">Dashboard</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#assessment-list" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">assignment</span>
+                            <span class="nav-label">Assessment List</span>
+                        </a>
+                        <span class="nav-tooltip">Assessment List</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reports" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">docs</span>
+                            <span class="nav-label">Reports</span>
+                        </a>
+                        <span class="nav-tooltip">Reports</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#scheduling" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">calendar_clock</span>
+                            <span class="nav-label">Scheduling</span>
+                        </a>
+                        <span class="nav-tooltip">Scheduling</span>
+                    </li>
+                    <span class="section-title">Administration</span>
+                    <li class="nav-item">
+                        <a href="#user-management" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">groups</span>
+                            <span class="nav-label">User Management</span>
+                        </a>
+                        <span class="nav-tooltip">User Management</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#system-configuration" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">settings</span>
+                            <span class="nav-label">System Configuration</span>
+                        </a>
+                        <span class="nav-tooltip">System Configuration</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#record-management" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">demography</span>
+                            <span class="nav-label">Record Management</span>
+                        </a>
+                        <span class="nav-tooltip">Record Management</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#audit" class="nav-link">
+                            <span class="nav-icon material-symbols-rounded">policy</span>
+                            <span class="nav-label">Audit Logs</span>
+                        </a>
+                        <span class="nav-tooltip">Audit Logs</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Panel (Top Bar + Content) -->
+        <div class="main-panel">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title" id="topBarTitle">Dashboard</h1>
+                </div>
+                <div class="top-bar-right">
+      
+                    <!-- Notification -->
+                    <div class="notification">
+                    <span class="nav-icon material-symbols-rounded">notifications</span>
+                    <span class="badge" id="notificationCount">3</span>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <ul class="notification-list">
+                        <li>New assessment submitted</li>
+                        <li>Barangay update available</li>
+                        <li>System backup completed</li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <!-- Profile Dropdown -->
+                    <div class="profile" id="profileToggle">
+                        <img src="../images/profile.jpg" alt="Profile Picture">
+                        
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <div class="profile-info">
+                            <img src="../images/profile.jpg" alt="Profile Picture">
+                            <h4>Ronaldo Sosa</h4>
+                            <p>ronaldososa@gmail.com</p>
+                            </div>
+                            <ul class="profile-options">
+                            <li><span class="icon material-symbols-rounded">account_circle</span>Manage Profile</li>
+                            <li><span class="icon material-symbols-rounded">logout</span>Logout</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <section id="dashboard-section" class="content-section">
+                    <!-- Stats Overview -->
+                    <div class="cards">
+                    <div class="card">
+                        <h3>Total Health Workers</h3>
+                        <p class="card-stats">27</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total Barangays</h3>
+                        <p class="card-stats">27</p>
+                    </div>
+                    <div class="card">
+                        <h3>Completed Assessments</h3>
+                        <p class="card-stats">892</p>
+                    </div>
+                    </div>
+
+                    <!-- Analytics Visualization Cards -->
+                    <!-- Total Risk Distribution -->
+                    <div class="charts">
+                    <div class="card">
+                        <div class="card-header">
+                        <h3>Total Risk Distribution</h3>
+                        <div class="custom-dropdown filter" data-filter-type="month">
+                            <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                <span class="label">This Month</span>
+                                <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button onclick="selectFilterOption(this, 'Current Month')">Current Month</button>
+                                <button onclick="selectFilterOption(this, 'Last Month')">Last Month</button>
+                                <button onclick="selectFilterOption(this, 'Quarter')">Quarter</button>
+                            </div>
+                        </div>
+                        </div>
+                        <p class="chart-description">Shows the percentage of assessed individuals by risk level.</p>
+                        <canvas id="riskPie"></canvas>
+                    </div>
+
+                    <!-- Risk Factors -->
+                    <div class="card">
+                        <div class="card-header">
+                        <h3>Risk Factors</h3>
+                
+                        <div class="custom-dropdown filter" data-filter-type="month">
+                            <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                <span class="label">This Month</span>
+                                <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button onclick="selectFilterOption(this, 'Current Month')">Current Month</button>
+                                <button onclick="selectFilterOption(this, 'Last Month')">Last Month</button>
+                                <button onclick="selectFilterOption(this, 'Quarter')">Quarter</button>
+                            </div>
+                        </div>
+                        </div>
+                        <p class="chart-description">Displays the distribution of risk factors among assessed individuals.</p>
+                        <canvas id="riskBar"></canvas>
+                    </div>
+
+                    <!-- Measles Demographics -->
+                    <div class="card">
+                        <div class="card-header">
+                        <h3>Measles Demographics</h3>
+                        <div class="custom-dropdown filter" data-filter-type="month">
+                            <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                <span class="label">This Month</span>
+                                <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button onclick="selectFilterOption(this, 'Current Month')">Current Month</button>
+                                <button onclick="selectFilterOption(this, 'Last Month')">Last Month</button>
+                                <button onclick="selectFilterOption(this, 'Quarter')">Quarter</button>
+                            </div>
+                        </div>
+                        </div>
+                        <p class="chart-description">Shows the distribution of measles cases by age.</p>
+                        <canvas id="measlesChart"></canvas>
+                    </div>
+
+                    <!-- Heat Map -->
+                    <div class="heatmap-card">
+                        <div class="card-header">
+                        <h3>Heat Map</h3>
+                        <div class="heatmap-dropdown-group">
+                        <div class="custom-dropdown filter" data-filter-type="month">
+                            <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                <span class="label">Map</span>
+                                <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button onclick="selectFilterOption(this, 'Map')">Map</button>
+                                <button onclick="selectFilterOption(this, 'Line List')">Line List</button>
+                            </div>
+                        </div>
+
+                        <div class="custom-dropdown filter" data-filter-type="location">
+                            <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                <span class="label">Location</span>
+                                <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button onclick="selectFilterOption(this, 'Barangay Aldiano Olaes')">Barangay Aldiano Olaes</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Benjamin Tirona')">Barangay Benjamin Tirona</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Bernardo Pulido')">Barangay Bernardo Pulido</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Epifanio Malia')">Barangay Epifanio Malia</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Francisco De Castro')">Barangay Francisco De Castro</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Francisco Reyes')">Barangay Francisco Reyes</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Fiorello Calimag')">Barangay Fiorello Calimag</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Gavino Maderan')">Barangay Gavino Maderan</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Gregoria De Jesus')">Barangay Gregoria De Jesus</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Inocencio Salud')">Barangay Inocencio Salud</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Jacinto Lumbreras')">Barangay Jacinto Lumbreras</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Kapitan Kua')">Barangay Kapitan Kua</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Koronel Jose P. Elises')">Barangay Koronel Jose P. Elises</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Macario Dacon')">Barangay Macario Dacon</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Marcelino Memije')">Barangay Marcelino Memije</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Nicolasa Virata')">Barangay Nicolasa Virata</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Pantaleon Granados')">Barangay Pantaleon Granados</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Ramon Cruz Sr.')">Barangay Ramon Cruz Sr.</button>
+                                <button onclick="selectFilterOption(this, 'Barangay San Gabriel')">Barangay San Gabriel</button>
+                                <button onclick="selectFilterOption(this, 'Barangay San Jose')">Barangay San Jose</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Severino De Las Alas')">Barangay Severino De Las Alas</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Teniente Tiago')">Barangay Teniente Tiago</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Poblacion 1')">Barangay Poblacion 1</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 2</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 3</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 4</button>
+                                <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 5</button>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        <p class="chart-description">Shows case distribution by barangay using map or table view.</p>
+                        <div id="heatMapView">
+                        <img src="../images/map.jpg" alt="Heat Map" style="width: 100%; border-radius: 10px;">
+                        </div>
+                        <div id="heatListView" style="display: none;">
+                        <table class="line-list" id="brgyTable">
+                            <thead>
+                            <tr>
+                                <th>Barangay</th>
+                                <th>Total Cases</th>
+                                <th>Risk Level</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="risk-low" data-brgy="Barangay Uno">
+                                <td>Barangay Ramon Cruz Sr.</td>
+                                <td>12</td>
+                                <td>Low</td>
+                            </tr>
+                            <tr class="risk-moderate" data-brgy="San Isidro">
+                                <td>Barangay Epifanio Malia</td>
+                                <td>27</td>
+                                <td>Moderate</td>
+                            </tr>
+                            <tr class="risk-high" data-brgy="Zone IV">
+                                <td>Poblacion 4</td>
+                                <td>45</td>
+                                <td>High</td>
+                            </tr>
+                            <tr class="risk-very-high" data-brgy="Poblacion">
+                                <td>Poblacion 5</td>
+                                <td>72</td>
+                                <td>Very High</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="recent-activity">
+                        <div class="card-header">
+                            <h3>Recent Activity</h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        <ul class="activity-list">
+                            <li> Barangay San Jose submitted 5 new assessments</li>
+                            <li> Backup completed successfully</li>
+                            <li> New BHW added: Jenny A.</li>
+                        </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Assessment List Section -->
+                <section id="assessment-list" class="content-section">
+                    <div class="card">
+                        <div class="filter-wrapper">
+                            <input type="text" placeholder="Search" class="search-box">
+                            <div class="filter-bar">
+                                <div class="date-range-wrapper">
+                                    <div class="date-display">
+                                    <input type="text" id="dateRangeInput" readonly placeholder="Select Date">
+                                    <button id="togglePicker" class="icon material-symbols-rounded">date_range</button>
+                                    </div>
+                                    <div class="date-picker-popup" id="datePickerPopup">
+                                        <div class="popup-layout">
+                                            <div class="preset-options-vertical">
+                                                <button onclick="setPreset(0)">Today</button>
+                                                <button onclick="setPreset(1)">Yesterday</button>
+                                                <button onclick="setPreset(7)">Last 7 Days</button>
+                                                <button onclick="setPreset(30)">Last 30 Days</button>
+                                                <button onclick="setPreset(90)">Last 3 Months</button>
+                                                <button onclick="setPreset(365)">Last Year</button>
+                                                <button class="custom-selected">Custom</button>
+                                            </div>
+                                            <div class="calendar-controls">
+                                                <label for="fromDate">From:</label>
+                                                <input type="date" id="fromDate">
+                                                <label for="toDate">To:</label>
+                                                <input type="date" id="toDate">
+                                                <button class="apply-btn" onclick="applyDateFilter()">Apply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- General Filter Dropdown -->
+                                <div class="custom-dropdown filter" data-filter-type="risk">
+                                <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                    <span class="label">risk level</span>
+                                    <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <button disabled selected>risk level</button>
+                                    <button onclick="selectFilterOption(this, 'All')">All</button>
+                                    <button onclick="selectFilterOption(this, 'Very Low Risk')">Very Low Risk</button>
+                                    <button onclick="selectFilterOption(this, 'Low Risk')">Low Risk</button>
+                                    <button onclick="selectFilterOption(this, 'Moderate Risk')">Moderate Risk</button>
+                                    <button onclick="selectFilterOption(this, 'High Risk')">High Risk</button>
+                                    <button onclick="selectFilterOption(this, 'Very High Risk')">Very High Risk</button>
+                                </div>
+                                </div>
+
+                                <div class="custom-dropdown filter" data-filter-type="location">
+                                <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                    <span class="label">barangays</span>
+                                    <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <button disabled selected>barangays</button>
+                                    <button onclick="selectFilterOption(this, 'All')">All</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Aldiano Olaes')">Barangay Aldiano Olaes</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Benjamin Tirona')">Barangay Benjamin Tirona</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Bernardo Pulido')">Barangay Bernardo Pulido</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Epifanio Malia')">Barangay Epifanio Malia</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Francisco De Castro')">Barangay Francisco De Castro</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Francisco Reyes')">Barangay Francisco Reyes</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Fiorello Calimag')">Barangay Fiorello Calimag</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Gavino Maderan')">Barangay Gavino Maderan</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Gregoria De Jesus')">Barangay Gregoria De Jesus</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Inocencio Salud')">Barangay Inocencio Salud</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Jacinto Lumbreras')">Barangay Jacinto Lumbreras</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Kapitan Kua')">Barangay Kapitan Kua</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Koronel Jose P. Elises')">Barangay Koronel Jose P. Elises</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Macario Dacon')">Barangay Macario Dacon</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Marcelino Memije')">Barangay Marcelino Memije</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Nicolasa Virata')">Barangay Nicolasa Virata</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Pantaleon Granados')">Barangay Pantaleon Granados</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Ramon Cruz Sr.')">Barangay Ramon Cruz Sr.</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay San Gabriel')">Barangay San Gabriel</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay San Jose')">Barangay San Jose</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Severino De Las Alas')">Barangay Severino De Las Alas</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Teniente Tiago')">Barangay Teniente Tiago</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Poblacion 1')">Barangay Poblacion 1</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 2</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 3</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 4</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 5</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table -->
+                        <table class="line-list" id="assessmentTable">
+                        <thead>
+                            <tr>
+                            <th>Date Assessed</th>
+                            <th>Full Name</th>
+                            <th>Sex</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>BMI</th>
+                            <th>Blood Pressure</th>
+                            <th>Medication</th>
+                            <th>Risk Level</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-brgy="Barangay San Jose" data-date="07-10-2025">
+                            <td>07-10-2025</td>
+                            <td>Ana Dela Cruz</td>
+                            <td>F</td>
+                            <td>45</td>
+                            <td>Barangay San Jose</td>
+                            <td>23.5</td>
+                            <td>120/80</td>
+                            <td>Metformin</td>
+                            <td class="risk-low">Low</td>
+                            <td><button class="view-btn" onclick="openAssessmentModal()">View</button>
+                                <button class="export-btn" onclick="exportAssessmentDetails('Ana Dela Cruz')">export pdf</i></button>
+                            </td>
+                            </tr>
+
+                            <tr data-brgy="Poblacion 4" data-date="07-11-2025">
+                            <td>07-11-2025</td>
+                            <td>Juan Santos</td>
+                            <td>M</td>
+                            <td>52</td>
+                            <td>Poblacion 4</td>
+                            <td>28.7</td>
+                            <td>140/90</td>
+                            <td>Amlodipine</td>
+                            <td class="risk-high">High</td>
+                            <td><button class="view-btn" onclick="openAssessmentModal()">View</button>
+                                <button class="export-btn" onclick="exportAssessmentDetails('Ana Dela Cruz')">export pdf</i></button>
+                            </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                        </table>
+
+                    </div>
+   
+                    <!-- Modal Container -->
+                    <div id="assessmentModal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="document.getElementById('assessmentModal').style.display='none'">&times;</span>
+                        <h2>📝 NCD Risk Assessment</h2>
+
+                        <form id="assessmentForm">
+                        <!-- 1. Personal Information -->
+                        <fieldset>
+                            <legend>1. Personal Information</legend>
+                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Birthdate">
+                            <input type="text" placeholder="Age">
+                            <select><option>Civil Status</option><option>Single</option><option>Married</option><option>Widowed</option></select>
+                            <select><option>Sex</option><option>Male</option><option>Female</option></select>
+                            <input type="text" placeholder="Address">
+                            <input type="text" placeholder="Contact No.">
+                            <input type="text" placeholder="Occupation">
+                            <select><option>Educational Attainment</option><option>Elementary</option><option>High School</option><option>College</option><option>Postgrad</option></select>
+                        </fieldset>
+
+                        <!-- 2. Family History -->
+                        <fieldset>
+                            <legend>2. Family History</legend>
+                            <label>Hypertension: <input type="radio" name="fh1"> Yes <input type="radio" name="fh1"> No</label>
+                            <label>Stroke: <input type="radio" name="fh2"> Yes <input type="radio" name="fh2"> No</label>
+                            <label>Heart Attack: <input type="radio" name="fh3"> Yes <input type="radio" name="fh3"> No</label>
+                            <label>Diabetes: <input type="radio" name="fh4"> Yes <input type="radio" name="fh4"> No</label>
+                            <label>Asthma: <input type="radio" name="fh5"> Yes <input type="radio" name="fh5"> No</label>
+                            <label>Cancer: <input type="radio" name="fh6"> Yes <input type="radio" name="fh6"> No</label>
+                            <label>Kidney Disease: <input type="radio" name="fh7"> Yes <input type="radio" name="fh7"> No</label>
+                        </fieldset>
+
+                        <!-- 3. Obesity & Blood Pressure -->
+                        <fieldset>
+                            <legend>3. Obesity & Blood Pressure</legend>
+                            <input type="text" placeholder="Height (cm)">
+                            <input type="text" placeholder="Weight (kg)">
+                            <input type="text" placeholder="BMI">
+                            <input type="text" placeholder="BMI Category">
+                            <label>Obesity: <input type="radio" name="obesity"> Yes <input type="radio" name="obesity"> No</label>
+                            <input type="text" placeholder="Waist Circumference (cm)">
+                            <label>Central Adiposity: <input type="radio" name="adiposity"> Yes <input type="radio" name="adiposity"> No</label>
+                            <label><strong>BP 1st Reading</strong></label>
+                            <input type="text" placeholder="BP Systolic">
+                            <input type="text" placeholder="BP Diastolic">
+                            <label><strong>BP 2nd Reading</strong></label>
+                            <input type="text" placeholder="BP Systolic">
+                            <input type="text" placeholder="BP Diastolic">
+                            <label>Raised BP: <input type="radio" name="raisedbp"> Yes <input type="radio" name="raisedbp"> No</label>
+                            <input type="text" placeholder="BP Category">
+                        </fieldset>
+
+                        <!-- 4. Smoking -->
+                        <fieldset>
+                            <legend>4. Smoking</legend>
+                            <select>
+                            <option>Smoking Status</option>
+                            <option>Never Smoked</option>
+                            <option>Current Smoker</option>
+                            <option>Stopped < 1 year</option>
+                            <option>Stopped > 1 year</option>
+                            <option>Passive Smoker</option>
+                            </select>
+                        </fieldset>
+
+                        <!-- 5. Alcohol Intake -->
+                        <fieldset>
+                            <legend>5. Alcohol Intake</legend>
+                            <label>Drinks Alcohol: <input type="radio" name="alcohol"> Yes <input type="radio" name="alcohol"> No</label>
+                            <label>Excessive Alcohol Intake: <input type="radio" name="excessive"> Yes <input type="radio" name="excessive"> No</label>
+                        </fieldset>
+
+                        <!-- 6. Diet & Physical Activity -->
+                        <fieldset>
+                            <legend>6. Diet & Physical Activity</legend>
+                            <label>High Fat/Salt Food Intake: <input type="radio" name="fat"> Yes <input type="radio" name="fat"> No</label>
+                            <label>3 Servings of Vegetables: <input type="radio" name="veg"> Yes <input type="radio" name="veg"> No</label>
+                            <label>2–3 Servings of Fruits: <input type="radio" name="fruit"> Yes <input type="radio" name="fruit"> No</label>
+                            <label>Physically Active: <input type="radio" name="active"> Yes <input type="radio" name="active"> No</label>
+                        </fieldset>
+
+                        <!-- 7. Questionnaire -->
+                        <fieldset>
+                            <legend>7. Questionnaire (Possible Angina)</legend>
+                            <label>Q1: Pananakit sa dibdib? <input type="radio" name="q1"> Yes <input type="radio" name="q1"> No</label>
+                            <label>Q2: Sakit sa kaliwang bahagi o braso? <input type="radio" name="q2"> Yes <input type="radio" name="q2"> No</label>
+                            <label>Q3: Sumakit habang naglalakad? <input type="radio" name="q3"> Yes <input type="radio" name="q3"> No</label>
+                            <label>Q4: Tumitigil ka ba kapag sumasakit? <input type="radio" name="q4"> Yes <input type="radio" name="q4"> No</label>
+                            <label>Q5: Nawawala ba kapag nagpapahinga? <input type="radio" name="q5"> Yes <input type="radio" name="q5"> No</label>
+                            <label>Q6: Nawawala ba sa loob ng 10 minuto? <input type="radio" name="q6"> Yes <input type="radio" name="q6"> No</label>
+                            <label>Q7: Tumatagal ba ng 30+ minuto? <input type="radio" name="q7"> Yes <input type="radio" name="q7"> No</label>
+                            <label>Q8: Stroke/TIA symptoms? <input type="radio" name="q8"> Yes <input type="radio" name="q8"> No</label>
+                        </fieldset>
+
+                        <!-- 8. Diabetes Screening -->
+                        <fieldset>
+                            <legend>8. Diabetes Screening</legend>
+                            <label>Diagnosed with Diabetes? <input type="radio" name="diabetes"> Yes <input type="radio" name="diabetes"> No</label>
+                            <select>
+                            <option>Diagnosis Type</option>
+                            <option>With Medication</option>
+                            <option>Without Medication</option>
+                            <option>Do not know</option>
+                            </select>
+                            <label>Polyphagia: <input type="radio" name="polyphagia"> Yes <input type="radio" name="polyphagia"> No</label>
+                            <label>Polydipsia: <input type="radio" name="polydipsia"> Yes <input type="radio" name="polydipsia"> No</label>
+                            <label>Polyuria: <input type="radio" name="polyuria"> Yes <input type="radio" name="polyuria"> No</label>
+                        </fieldset>
+
+                        </form>
+                    </div>
+                    </div>
+                </section>
+
+
+                <section id="reports" class="content-section" hidden>
+                    <div class="tabs">
+                        <button class="tab active" id="overviewTabBtn">Overview</button>
+                        <button class="tab" id="assessmentReportTabBtn">Assessment Report</button>
+                    </div>
+                    <div class="card">
+                        <!-- Summary Cards -->
+                        <div class="summary-cards">
+                        <div class="summary-card"><h3>Total Assessments</h3><p id="totalAssessments">0</p></div>
+                        <div class="summary-card"><h3>At-Risk Patients</h3><p id="atRiskPatients">0</p></div>
+                        <div class="summary-card"><h3>New Hypertension Cases</h3><p id="newHypertension">0</p></div>
+                        <div class="summary-card"><h3>New Diabetes Cases</h3><p id="newDiabetes">0</p></div>
+                        </div>
+
+                        <!-- Filters -->
+                        <div class="filter-bar">
+                        <select class="filter" id="locationFilter">
+                            <option value="">All Locations</option>
+                            <option value="Brgy 1">Brgy 1</option>
+                            <option value="Brgy 2">Brgy 2</option>
+                        </select>
+
+                        <select class="filter" id="sexFilter">
+                            <option value="">All Sex</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <select class="filter" id="riskFilter">
+                            <option value="">All Risk Levels</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                        </select>
+
+                        <div class="date-range-wrapper">
+                            <input type="text" id="reportDateRange" placeholder="Select Date Range" readonly />
+                            <button id="toggleReportDate">&#128197;</button>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="filterReports()">Filter</button>
+                        </div>
+
+                        <!-- Charts -->
+                        <div class="charts-container">
+                        <canvas id="barChart" height="100"></canvas>
+                        <canvas id="pieChart" height="100"></canvas>
+                        </div>
+
+                        <!-- Export Buttons -->
+                        <div class="export-buttons">
+                        <button onclick="exportToPDF()" class="btn export-btn">📄 Export PDF</button>
+                        <button onclick="exportToCSV()" class="btn export-btn">📊 Export CSV</button>
+                        </div>
+
+                        <!-- Report Table -->
+                        <div class="table-wrapper">
+                        <table id="reportTable">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Sex</th>
+                                <th>Age</th>
+                                <th>Address</th>
+                                <th>Risk Level</th>
+                                <th>Diagnosis</th>
+                                <th>Date</th>
+                                <th>Encoder</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Report rows will be populated via JS -->
+                            </tbody>
+                        </table>
+                        </div>
+
+                        <!-- PhilPEN Summary Placeholder -->
+                        <div class="philpen-summary">
+                        <h3>PhilPEN Monthly Summary</h3>
+                        <table class="philpen-table">
+                            <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Screened Clients</th>
+                                <th>Hypertension</th>
+                                <th>Diabetes</th>
+                                <th>Both</th>
+                                <th>High Risk Adults</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Monthly data -->
+                            <tr><td>January</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+                            <!-- Repeat rows for each month -->
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Scheduling Section -->
+                <section id="scheduling" class="content-section">
+                    <div class="card-header">
+                        <h3>Manage Availability</h3>
+                            <button class="export-btn" onclick="openScheduleForm()">+ Add Availability</button>
+                        </div>
+
+                        <div id="calendar" style="min-height: 600px;"></div>
+
+                        <div id="scheduleForm" style="display: none;">
+                            <label for="scheduleTitle">Title</label>
+                            <input type="text" id="scheduleTitle" class="config-input" placeholder="e.g. Barangay Visit, Consultation">
+
+                            <label for="scheduleDate">Date</label>
+                            <input type="date" id="scheduleDate" class="config-input">
+
+                            <label for="startTime">Start Time</label>
+                            <input type="time" id="startTime" class="config-input">
+
+                            <label for="endTime">End Time</label>
+                            <input type="time" id="endTime" class="config-input">
+
+                            <label for="location">Location</label>
+                            <input type="text" id="location" class="config-input" placeholder="e.g. Barangay San Jose Health Center">
+
+                            <button class="save-btn" onclick="addSchedule()">Save</button>
+                            <button class="view-btn danger" onclick="closeScheduleForm()">Cancel</button>
+                        </div>
+
+                </section>
+
+                <!-- Admin Sections -->
+                <!-- User Management Section -->
+                <section id="user-management" class="content-section">
+                    <div class="tabs">
+                        <button class="tab active" id="usersTabBtn">Users</button>
+                        <button class="tab" id="addUserTabBtn">Add User</button>
+                    </div>
+                    
+                    <div id="userListSection">
+                        <div class="card">
+                            <h3>Users<span class="user-count">(2)</span></h3>
+                            <div class="card-header">
+                                <input type="text" placeholder="Search users..." class="search-box"/>
+                                <div class="filters">
+                                    <div class="custom-dropdown filter" data-filter-type="sort">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">sort by</span>
+                                        <span class="icon material-symbols-rounded">sort</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>sort by</button>
+                                        <button onclick="selectFilterOption(this, 'Ascending')">Ascending</button>
+                                        <button onclick="selectFilterOption(this, 'Descending')">Descending</button>
+                                    </div>
+                                    </div>
+
+                                    <div class="custom-dropdown filter" data-filter-type="role">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">role</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>role</button>
+                                        <button onclick="selectFilterOption(this, 'Admin')">Admin</button>
+                                        <button onclick="selectFilterOption(this, 'MHO')">MHO</button>
+                                        <button onclick="selectFilterOption(this, 'BHW')">BHW</button>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="custom-dropdown filter" data-filter-type="location">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">barangays</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>barangays</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Aldiano Olaes')">Barangay Aldiano Olaes</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Benjamin Tirona')">Barangay Benjamin Tirona</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Bernardo Pulido')">Barangay Bernardo Pulido</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Epifanio Malia')">Barangay Epifanio Malia</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Francisco De Castro')">Barangay Francisco De Castro</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Francisco Reyes')">Barangay Francisco Reyes</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Fiorello Calimag')">Barangay Fiorello Calimag</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Gavino Maderan')">Barangay Gavino Maderan</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Gregoria De Jesus')">Barangay Gregoria De Jesus</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Inocencio Salud')">Barangay Inocencio Salud</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Jacinto Lumbreras')">Barangay Jacinto Lumbreras</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Kapitan Kua')">Barangay Kapitan Kua</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Koronel Jose P. Elises')">Barangay Koronel Jose P. Elises</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Macario Dacon')">Barangay Macario Dacon</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Marcelino Memije')">Barangay Marcelino Memije</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Nicolasa Virata')">Barangay Nicolasa Virata</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Pantaleon Granados')">Barangay Pantaleon Granados</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Ramon Cruz Sr.')">Barangay Ramon Cruz Sr.</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay San Gabriel')">Barangay San Gabriel</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay San Jose')">Barangay San Jose</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Severino De Las Alas')">Barangay Severino De Las Alas</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Teniente Tiago')">Barangay Teniente Tiago</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Poblacion 1')">Barangay Poblacion 1</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 2</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 3</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 4</button>
+                                        <button onclick="selectFilterOption(this, 'Barangay Poblacion 2')">Barangay Poblacion 5</button>
+                                    </div>
+                                    </div>
+
+                                    <div class="custom-dropdown filter" data-filter-type="status">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">status</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>status</button>
+                                        <button onclick="selectFilterOption(this, 'Active')">Active</button>
+                                        <button onclick="selectFilterOption(this, 'Inactive')">Inactive</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table class="line-list" id="userTable">
+                                <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Location</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- Example users -->
+                                <tr>
+                                    <td>Jenny A.</td>
+                                    <td>jenny.bhw@coras.ph</td>
+                                    <td>Barangay San Jose</td>
+                                    <td>BHW</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td>
+                                    <button class="view-btn" onclick="editUser()">Edit</button>
+                                    <button class="view-btn danger" onclick="deleteUser()">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dr. Ronaldo Sosa</td>
+                                    <td>ronaldososa@gmail.com</td>
+                                    <td>Barangay San Jose</td>
+                                    <td>MHO</td>
+                                    <td><span class="status inactive">Inactive</span></td>
+                                    <td>
+                                    <button class="view-btn" onclick="editUser()">Edit</button>
+                                    <button class="view-btn danger" onclick="deleteUser()">Delete</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div id="addUserForm" style="display: none;">
+                        <div class="card">
+                            <h3>Add New User</h3>
+                            <form id="userForm">
+                                <!-- Row 1 -->
+                                <div class="form-row four-cols">
+                                    <div class="form-item"><label for="firstName">First Name</label><input type="text" id="firstName" class="config-input" required></div>
+                                    <div class="form-item"><label for="middleName">Middle Name</label><input type="text" id="middleName" class="config-input" required></div>
+                                    <div class="form-item"><label for="lastName">Last Name</label><input type="text" id="lastName" class="config-input" required></div>
+                                    <div class="form-item"><label for="suffix">Suffix</label><input type="text" id="suffix" class="config-input"></div>
+                                </div>
+
+                                <!-- Row 2 -->
+                                <div class="form-row four-cols">
+                                    <div class="form-item"><label for="birthdate">Birthdate</label><input type="date" id="birthdate" class="config-input" required></div>
+                                    <div class="form-item"><label for="age">Age</label><input type="number" id="age" class="config-input" min="0" required></div>
+                                    <div class="form-item"><label for="sex">Sex</label>
+                                    <select id="sex" class="config-input" required>
+                                        <option disabled selected>Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    </div>
+                                    <div class="form-item"><label for="contactNumber">Contact Number</label><input type="tel" id="contactNumber" class="config-input" required></div>
+                                </div>
+
+                                <!-- Row 3 -->
+                                <div class="form-row two-cols">
+                                    <div class="form-item"><label for="email">Email Address</label><input type="email" id="email" class="config-input" required></div>
+                                    <div class="form-item"><label for="address">Address</label><input type="text" id="address" class="config-input" required></div>
+                                </div>
+
+                                <!-- Row 4 -->
+                                <div class="form-row two-col">
+                                    <div class="form-item"><label for="role">Role</label>
+                                    <select id="role" class="config-input" required>
+                                        <option disabled selected>Select</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="mho">MHO</option>
+                                        <option value="bhw">BHW</option>
+                                    </select>
+                                    </div>
+                                </div>
+
+                                <!-- Optional Conditional Fields -->
+                                <div id="barangayField" class="form-row one-col" style="display: none;">
+                                    <div class="form-item"><label for="barangay">Barangay</label>
+                                    <select id="barangay" class="config-input">
+                                        <option disabled selected>Select</option>
+                                        <option value="Barangay San Jose">Barangay San Jose</option>
+                                        <option value="Barangay Santo Tomas">Barangay Santo Tomas</option>
+                                        <option value="Barangay Poblacion">Barangay Poblacion</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div id="assignedOfficeField" class="form-row one-col" style="display: none;">
+                                    <div class="form-item"><label for="assignedOffice">Assigned Office</label>
+                                    <select id="assignedOffice" class="config-input">
+                                        <option disabled selected>Select</option>
+                                        <option value="RHU 1">RHU 1</option>
+                                        <option value="RHU 2">RHU 2</option>
+                                    </select>
+                                    </div>
+                                </div>
+
+                                <!-- Row 5 -->
+                                <div class="form-row one-cols">
+                                    <div class="form-item"><label for="password">Password</label><input type="password" id="password" class="config-input" required></div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="config-actions">
+                                    <button type="submit" class="save-btn">Save</button>
+                                    <button type="button" class="view-btn danger" onclick="toggleAddUserForm()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="system-configuration" class="content-section" hidden>
+                <div class="card">
+
+                    <!-- System Settings -->
+                    <div class="config-group">
+                    <h3>System Settings</h3>
+                    <label>System Name: <input type="text" class="config-input" placeholder="e.g., CoRAS"></label>
+                    <label>System Logo: <input type="file" class="config-input"></label>
+                    <label>Timezone:
+                        <select class="config-input">
+                        <option value="Asia/Manila">Asia/Manila</option>
+                        <option value="UTC">UTC</option>
+                        </select>
+                    </label>
+                    <label>Maintenance Mode:
+                        <select class="config-input">
+                        <option value="off">Off</option>
+                        <option value="on">On</option>
+                        </select>
+                    </label>
+                    </div>
+
+                    <!-- Role & Permission Settings -->
+                    <div class="config-group">
+                    <h3>User Roles & Permissions</h3>
+                    <label>Manage Roles:
+                        <select class="config-input">
+                        <option value="BHW">Barangay Health Worker</option>
+                        <option value="MHO">Municipal Health Officer</option>
+                        <option value="Admin">Administrator</option>
+                        </select>
+                    </label>
+                    <button class="btn-secondary">Edit Role Permissions</button>
+                    </div>
+
+                    <!-- Location Configuration -->
+                    <div class="config-group">
+                    <h3>Location Settings</h3>
+                    <label>Province: <input type="text" class="config-input"></label>
+                    <label>Municipality: <input type="text" class="config-input"></label>
+                    <label>Barangay: <input type="text" class="config-input"></label>
+                    <button class="btn-secondary">Update Location List</button>
+                    </div>
+
+                    <!-- Form & Assessment Settings -->
+                    <div class="config-group">
+                    <h3>Assessment Settings</h3>
+                    <label>BMI Threshold (Obese): <input type="number" class="config-input" placeholder="e.g., 30"></label>
+                    <label>BP High Threshold: <input type="number" class="config-input" placeholder="e.g., 140/90"></label>
+                    <label>Auto-Categorize Risk: 
+                        <select class="config-input">
+                        <option value="enabled">Enabled</option>
+                        <option value="disabled">Disabled</option>
+                        </select>
+                    </label>
+                    </div>
+
+                    <!-- Sync and Backup Settings -->
+                    <div class="config-group">
+                    <h3>Sync & Backup</h3>
+                    <label>Auto Sync Interval:
+                        <select class="config-input">
+                        <option value="hourly">Hourly</option>
+                        <option value="daily">Daily</option>
+                        </select>
+                    </label>
+                    <label>Last Sync: <span id="last-sync">N/A</span></label>
+                    <button class="btn-primary">Sync Now</button>
+                    <button class="btn-secondary">Download Backup</button>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="config-group">
+                    <h3>Notification Settings</h3>
+                    <label>Send Risk Alerts To:
+                        <select class="config-input">
+                        <option value="MHO">MHO Only</option>
+                        <option value="All">All Health Workers</option>
+                        </select>
+                    </label>
+                    <label>Enable Email Alerts:
+                        <select class="config-input">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        </select>
+                    </label>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="config-group">
+                    <h3>Security Settings</h3>
+                    <label>Password Minimum Length: <input type="number" class="config-input" value="8"></label>
+                    <label>Enable 2FA:
+                        <select class="config-input">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        </select>
+                    </label>
+                    <label>Session Timeout (mins): <input type="number" class="config-input" value="30"></label>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="config-actions">
+                    <button class="btn-primary">Save Settings</button>
+                    </div>
+                </div>
+                </section>
+
+
+                <section id="record-management" class="content-section">
+                    <!-- Tabs -->
+                    <div class="tabs">
+                    <button class="tab active" id="activeTabBtn" onclick="showActiveRecords()">Active Records</button>
+                    <button class="tab" id="archivedTabBtn" onclick="showArchivedRecords()">Archived Records</button>
+                    </div>
+
+                    <div class="card">
+                    <div class="filter-wrapper">
+                        <input type="text" placeholder="Search users..." class="search-box"/>
+                            <div class="filters">
+                                <div class="custom-dropdown filter" data-filter-type="sort">
+                                <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                    <span class="label">barangays</span>
+                                    <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <button disabled selected>barangays</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Ramon Cruz')">Barangay Ramon Cruz</button>
+                                    <button onclick="selectFilterOption(this, 'Barangay Epifanio Malia')">Barangay Epifanio Malia</button>
+                                </div>
+                                </div>
+
+                                    <div class="custom-dropdown filter" data-filter-type="role">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">role</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>Role</button>
+                                        <button onclick="selectFilterOption(this, 'Admin')">Admin</button>
+                                        <button onclick="selectFilterOption(this, 'MHO')">MHO</button>
+                                        <button onclick="selectFilterOption(this, 'BHW')">BHW</button>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <!-- Record Table -->
+                        <table class="line-list" id="recordTable">
+                        <thead>
+                            <tr>
+                            <th>Patient Name</th>
+                            <th>Barangay</th>
+                            <th>Date of Birth</th>
+                            <th>Last Assessment</th>
+                            <th>Risk Level</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Active Records -->
+                        <tbody id="activeRecordBody">
+                            <tr>
+                            <td>Ana Dela Cruz</td>
+                            <td>Barangay San Jose</td>
+                            <td>1985-04-10</td>
+                            <td>2025-07-10</td>
+                            <td class="risk-low">Low</td>
+                            <td>Active</td>
+                            <td>
+                                <button class="view-btn" onclick="editRecord('Ana Dela Cruz')">Edit</button>
+                                <button class="view-btn warning" onclick="archiveRecord(this)">Archive</button>
+                            </td>
+                            </tr>
+                        </tbody>
+
+                        <!-- Archived Records -->
+                        <tbody id="archivedRecordBody" style="display: none;">
+                            <tr>
+                            <td>Juan Santos</td>
+                            <td>Poblacion 4</td>
+                            <td>1972-12-18</td>
+                            <td>2025-07-11</td>
+                            <td class="risk-high">High</td>
+                            <td>Archived</td>
+                            <td>
+                                <button class="view-btn success" onclick="restoreRecord(this)">Restore</button>
+                                <button class="view-btn danger" onclick="permanentlyDeleteRecord(this)">Delete</button>
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+
+                <section id="audit" class="content-section" hidden>
+                    <div class="card">
+                        <h3>Audit Logs</h3>
+                        <div class="card-header">
+                            <input type="text" placeholder="Search users..." class="search-box"/>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div class="date-range-wrapper">
+                                    <div class="date-display">
+                                    <input type="text" id="auditDateRangeInput" readonly placeholder="Select Date">
+                                    <button id="auditTogglePicker" class="icon material-symbols-rounded">date_range</button>
+                                    </div>
+                                    <div class="date-picker-popup" id="auditDatePickerPopup">
+                                    <div class="popup-layout">
+                                    <div class="preset-options-vertical">
+                                        <button onclick="setAuditPreset(0)">Today</button>
+                                        <button onclick="setAuditPreset(1)">Yesterday</button>
+                                        <button onclick="setAuditPreset(7)">Last 7 Days</button>
+                                        <button onclick="setAuditPreset(30)">Last 30 Days</button>
+                                        <button onclick="setAuditPreset(90)">Last 3 Months</button>
+                                        <button onclick="setAuditPreset(365)">Last Year</button>
+                                        <button class="custom-selected">Custom</button>
+                                    </div>
+                                    <div class="calendar-controls">
+                                        <label for="fromDate">From:</label>
+                                        <input type="date" id="auditFromDate">
+                                        <label for="toDate">To:</label>
+                                        <input type="date" id="auditToDate">
+                                        <button class="apply-btn" onclick="applyDateFilter()">Apply</button>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="custom-dropdown filter" data-filter-type="auditFilter">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">All Types</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button onclick="selectFilterOption(this, 'All Types')">All Types</button>
+                                        <button onclick="selectFilterOption(this, 'Login')">Login</button>
+                                        <button onclick="selectFilterOption(this, 'Logout')">Logout</button>
+                                        <button onclick="selectFilterOption(this, 'Update')">Data Update</button>
+                                        <button onclick="selectFilterOption(this, 'Delete')">Data Deletion</button>
+                                        <button onclick="selectFilterOption(this, 'Add')">Record Created</button>
+                                    </div>
+                                </div>
+                                <div class="custom-dropdown filter" data-filter-type="role">
+                                    <button class="dropdown-toggle" onclick="toggleFilterDropdown(this)">
+                                        <span class="label">Role</span>
+                                        <span class="icon material-symbols-rounded">arrow_drop_down</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button disabled selected>Role</button>
+                                        <button onclick="selectFilterOption(this, 'Admin')">Admin</button>
+                                        <button onclick="selectFilterOption(this, 'MHO')">MHO</button>
+                                        <button onclick="selectFilterOption(this, 'BHW')">BHW</button>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <table class="line-list" id="auditLogTable">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                    <th>Description</th>
+                                    <th>Date & Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example entries -->
+                                <tr data-action="login">
+                                    <td>Dr. Ronaldo Sosa</td>
+                                    <td>ronaldososa@gmail.com</td>
+                                    <td>MHO</td>
+                                    <td>Login</td>
+                                    <td>Logged in from IP 192.168.1.3</td>
+                                    <td>2025-07-15 08:12 AM</td>
+                                </tr>
+                                <tr data-action="add">
+                                    <td>Jenny A.</td>
+                                    <td>jenny.bhw@coras.ph</td>
+                                    <td>BHW</td>
+                                    <td>Record Created</td>
+                                    <td>New assessment submitted</td>
+                                    <td>2025-07-14 03:44 PM</td>
+                                </tr>
+                                <tr data-action="update">
+                                    <td>Admin User</td>
+                                    <td>admin@coras.ph</td>
+                                    <td>Admin</td>
+                                    <td>Data Update</td>
+                                    <td>Edited patient record: Juan Santos</td>
+                                    <td>2025-07-13 11:27 AM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../mho_content/coras.js"></script>
+</body>
+</html>
